@@ -1,0 +1,31 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Include file containing declared variables
+      include_vars: vars.yml
+    - name: starting container
+      docker_container:
+        name: "{{ dockercontainer }}"
+        image: "{{ remoteansible }}"
+        volumes:
+          - /home/hostmachine/ansiblecontainer/mdir:/sqlfiles
+        hostname: "{{ remotescript }}"
+      register: output
+    - name: Add host to inventory
+      add_host:
+        name: "{{ output.ansible_facts.docker_container.Name }}"
+        ansible_connection: docker
+      changed_when: false
+    - name: Display /var/log/mysqld.log
+      delegate_to: "{{ output.ansible_facts.docker_container.Name }}"
+      raw: cat /var/log/mysqld.log
+      register: cat
+    - debug: msg="{{ cat }}"
+    - name: Display general container information
+      debug: 
+        msg:
+          - "Container name: {{ output.ansible_facts.docker_container.Name }}" 
+          - "IP-Address: {{ output.ansible_facts.docker_container.NetworkSettings.IPAddress }}"
+          - "Ports used: {{ output.ansible_facts.docker_container.Config.ExposedPorts }}"
+          - "Image used: {{ output.ansible_facts.docker_container.Config.Image }}"
+          - "Volume bound to: {{ output.ansible_facts.docker_container.HostConfig.Binds }}"
