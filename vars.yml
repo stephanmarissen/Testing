@@ -1,0 +1,4 @@
+---
+remoteansible: remotetest
+dockercontainer: "container{{ lookup('pipe', 'date +%Y%m%d%H%M%S') }}"
+remotescript:
