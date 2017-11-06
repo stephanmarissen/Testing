@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Include file containing variables
+      include_vars: vars.yml
+    - name: creating the image
+      docker_image:
+        path: /home/hostmachine/ansiblecontainer
+        name: "{{ remoteansible }}"
