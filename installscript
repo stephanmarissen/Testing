@@ -17,5 +17,5 @@ sudo apt-get update
 sudo apt-get install -y docker-ce
 sleep 30
 sudo gpasswd -a $USER docker
-sudo newgrp docker
+newgrp docker
 echo "Changed permissions, reboot now"
