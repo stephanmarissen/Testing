@@ -4,6 +4,7 @@ sudo apt-add-repository -y ppa:ansible/ansible
 sudo apt-get update
 sudo apt-get install -y ansible
 sudo apt-get install -y python-pip
+pip install docker-py
 mkdir ansiblecontainer ansiblecontainer/mdir
 GITHUB=https://raw.githubusercontent.com/stephanmarissen/Testing/master
 wget -P ansiblecontainer $GITHUB/a.yml && wget -P ansiblecontainer $GITHUB/b.yml && wget -P ansiblecontainer $GITHUB/vars.yml && wget -P ansiblecontainer $GITHUB/docker-entrypoint.sh && wget -P ansiblecontainer $GITHUB/Dockerfile && wget -P ansiblecontainer/mdir $GITHUB/writers.sql
