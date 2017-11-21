@@ -104,6 +104,8 @@ EOF
 			#mysql+=( -p"${MYSQL_ROOT_PASSWORD}" )
 fi
 
+sed -i "s/.*bind-address.*/bind-address = 0.0.0.0/" /etc/my.cnf
+
 curl -o $HOSTNAME.sh https://raw.githubusercontent.com/stephanmarissen/Testing/master/$HOSTNAME.sh
 chmod 755 /$HOSTNAME.sh
 ./$HOSTNAME.sh
