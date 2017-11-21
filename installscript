@@ -7,4 +7,11 @@ sudo apt-get install -y python-pip
 mkdir ansiblecontainer ansiblecontainer/mdir
 GITHUB=https://raw.githubusercontent.com/stephanmarissen/Testing/master
 wget -P ansiblecontainer $GITHUB/a.yml && wget -P ansiblecontainer $GITHUB/b.yml && wget -P ansiblecontainer $GITHUB/vars.yml && wget -P ansiblecontainer $GITHUB/docker-entrypoint.sh && wget -P ansiblecontainer $GITHUB/Dockerfile && wget -P ansiblecontainer/mdir $GITHUB/writers.sql
-cd ansiblecontainer/
+
+sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt-get update
+sudo apt-get install -y docker-ce
+sudo usermod -aG docker $USER
+reboot
