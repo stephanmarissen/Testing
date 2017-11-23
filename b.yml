@@ -7,6 +7,7 @@
       docker_container:
         name: "{{ dockercontainer }}"
         image: "{{ remoteansible }}"
+        Published_ports: 33060:3306
         volumes:
           - /home/hostmachine/ansiblecontainer/mdir:/sqlfiles
         hostname: "{{ remotescript }}"
