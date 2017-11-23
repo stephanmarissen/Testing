@@ -6,6 +6,7 @@ ARG PACKAGE_URL_SHELL=https://repo.mysql.com/yum/mysql-tools-community/el/7/x86_
 COPY docker-entrypoint.sh /entrypoint.sh
 
 ENV MYSQL_ROOT_PASSWORD=password
+ENV MYSQL_ROOT_HOST=%
 
 RUN rpmkeys --import https://repo.mysql.com/RPM-GPG-KEY-mysql \
   && yum install -y $PACKAGE_URL $PACKAGE_URL_SHELL libpwquality \
