@@ -7,9 +7,9 @@ sudo apt-get update
 sudo apt-get install -y ansible
 sudo apt-get install -y python-pip
 pip install docker-py
-mkdir importfiles
+mkdir /home/$USER/importfiles
 GITHUB=https://raw.githubusercontent.com/stephanmarissen/Testing/master
-wget $GITHUB/a.yml && wget $GITHUB/b.yml && wget $GITHUB/vars.yml && wget $GITHUB/docker-entrypoint.sh && wget $GITHUB/Dockerfile && wget -P /importfiles $GITHUB/writers.sql
+wget $GITHUB/a.yml && wget $GITHUB/b.yml && wget $GITHUB/vars.yml && wget $GITHUB/docker-entrypoint.sh && wget $GITHUB/Dockerfile && wget -P /home/$USER/importfiles $GITHUB/writers.sql
 sudo apt-get install -y git
 
 
