@@ -15,6 +15,5 @@ RUN rpmkeys --import https://repo.mysql.com/RPM-GPG-KEY-mysql \
 
 VOLUME /sqlfiles
 
-EXPOSE 3306 33060
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["mysqld"]
