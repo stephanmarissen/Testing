@@ -5,5 +5,5 @@
       include_vars: vars.yml
     - name: creating the image
       docker_image:
-        path: /home/hostmachine/ansiblecontainer
+        path: /home/$USER/
         name: "{{ remoteansible }}"
