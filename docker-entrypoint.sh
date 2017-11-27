@@ -120,8 +120,4 @@ mysqladmin --defaults-extra-file="$PASSFILE" shutdown -uroot --socket="$SOCKET"
 	echo "[Entrypoint] Starting MySQL 5.7.19-1.1.1"
 fi
 
-docker-ip() {
-  docker inspect --format '{{ .NetworkSettings.IPAddress }}' "$@"
-}
-
 exec "$@"
