@@ -10,7 +10,7 @@
         exposed_ports: "{{ boundport }}"
         published_ports: "{{ boundport }}"
         volumes:
-          - /importfiles:/sqlfiles
+          - ./importfiles:/sqlfiles
         hostname: "{{ remotescript }}"
       register: output
     - name: Add host to inventory
